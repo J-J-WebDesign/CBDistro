@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CBDistro.Models.Requests
+namespace CBDistro.Models.Domain
 {
-    public class ProductAddRequest
+    public class Product
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }

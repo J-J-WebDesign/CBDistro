@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class Link extends Component {
     goBack = ()=>{
-        this.props.history.goBack()
+        this.props.history.push("/")
     }
     render() {
         return (

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors;
-using Microsoft.AspNetCore.Mvc.Cors;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CBDistro.Web.StartUp
@@ -23,9 +22,9 @@ namespace CBDistro.Web.StartUp
                     .AllowCredentials()
                     .SetIsOriginAllowedToAllowWildcardSubdomains()
                     .SetIsOriginAllowed(delegate (string requestingOrigin)
-                     {
-                         return true;
-                     }).Build();
+                    {
+                        return true;
+                    }).Build();
                 });
             });
 
@@ -37,7 +36,7 @@ namespace CBDistro.Web.StartUp
             });
         }
 
-        public static void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("AllowAllCors");
         }

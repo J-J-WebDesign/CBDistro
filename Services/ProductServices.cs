@@ -1,15 +1,10 @@
-﻿using CBDistro.Models;
-using CBDistro.Models.Domain;
+﻿using CBDistro.Models.Domain;
 using CBDistro.Data.Providers;
-using System;
 using System.Collections.Generic;
-using CBDistro.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Data;
 using CBDistro.Data.Extensions;
-using static CBDistro.Services.Interfaces.IProductServices;
+using CBDistro.Services.Interfaces;
 
 namespace CBDistro.Services
 {

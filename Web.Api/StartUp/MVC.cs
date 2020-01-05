@@ -26,7 +26,7 @@ namespace CBDistro.Web.StartUp
                 o.Filters.Add(typeof(ModelBindAttribute));
             });
 
-            mvc.SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            mvc.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             Action<ApiBehaviorOptions> setUpApiBehavior = apiBehaviorOptions =>
             {
@@ -35,7 +35,7 @@ namespace CBDistro.Web.StartUp
             mvc.ConfigureApiBehaviorOptions(setUpApiBehavior);
         }
 
-        public static void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseMvc();
         }

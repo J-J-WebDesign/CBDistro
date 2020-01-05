@@ -4,15 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using CBDistro.Models.Domain;
 using CBDistro.Services;
+using CBDistro.Services.Interfaces;
 using CBDistro.Web.Models.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using static CBDistro.Services.Interfaces.IProductServices;
 
 namespace api.Controllers
 {
     [ApiController]
-    [Route("api/products")]
+    [AllowAnonymous]
+    [Route("api/products"),]
     public class ProductsApiController : ControllerBase
     {
         private IProductService _service = null;

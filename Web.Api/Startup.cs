@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using CBDistro.Web.StartUp;
+using CBDistro.Web.Core;
 
 namespace CBDistro
 {
@@ -22,6 +20,10 @@ namespace CBDistro
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddMemoryCache();
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.EnableEndpointRouting = false;
+            //});
 
             services.AddMvc();
 
@@ -44,13 +46,13 @@ namespace CBDistro
         private void ConfigureAppSettings(IServiceCollection services)
         {
             services.AddOptions();
-            //services.Configure<SecurityConfig>(Configuration.GetSection("SecurityConfig"));
-            //services.Configure<JsonWebTokenConfig>(Configuration.GetSection("JsonWebTokenConfig"));
+            services.Configure<SecurityConfig>(Configuration.GetSection("SecurityConfig"));
+            services.Configure<JsonWebTokenConfig>(Configuration.GetSection("JsonWebTokenConfig"));
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             Authentication.Configure(app, env);
 

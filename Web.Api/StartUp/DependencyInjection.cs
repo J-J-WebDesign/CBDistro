@@ -3,14 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CBDistro.Data;
 using CBDistro.Services;
-using CBDistro.Web;
 using System;
 //using CBDistro.Services.Interfaces.Security;
 //using Amazon.S3;
 using CBDistro.Data.Providers;
-using static CBDistro.Services.Interfaces.IProductServices;
+using CBDistro.Services.Interfaces;
 
 namespace CBDistro.Web.StartUp
 {
@@ -24,8 +22,8 @@ namespace CBDistro.Web.StartUp
             }
 
             services.AddSingleton<IConfiguration>(configuration);   // IConfiguration explicitly
-
-            string connString = configuration.GetConnectionString("Default");
+          
+            string connString = configuration.GetConnectionString("Default"); 
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2
             // The are a number of differe Add* methods you can use. Please verify which one you
             // should be using services.AddScoped<IMyDependency, MyDependency>();

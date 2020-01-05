@@ -37,7 +37,7 @@ namespace CBDistro.Web.StartUp
 
             CookieBuilder cookie = new CookieBuilder();
             cookie.Domain = security.AppDomain;
-            cookie.Name = security.CookieName;
+            cookie.Name = "CBDistroCookie";
             cookie.HttpOnly = true;
             cookie.Path = "/";
             cookie.SameSite = SameSiteMode.None;

@@ -32,7 +32,7 @@ constructor(props){
         return (
             <div>
                 <h3>Products!</h3>
-                {this.state.products}
+                {/* {this.state.products} */}
                 <button onClick={this.goBack} className="btn btn-danger">Go Home!</button>
             </div>
         )

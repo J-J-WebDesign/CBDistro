@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router} from 'react-router-dom'
 import "animate.css/animate.min.css";
+import "font-awesome/css/font-awesome.min.css";
 
 ReactDOM.render(<Router><App /></Router>, document.getElementById('root'));
 

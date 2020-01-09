@@ -57,6 +57,13 @@ namespace CBDistro.Services
 
             product.Id = reader.GetSafeInt32(startingIndex++);
             product.Name = reader.GetSafeString(startingIndex++);
+            product.Description = reader.GetSafeString(startingIndex++);
+            product.Price = reader.GetSafeInt32(startingIndex++);
+            product.Image = reader.GetSafeString(startingIndex++);
+            product.Brand = reader.GetSafeString(startingIndex++);
+            product.DateCreated = reader.GetSafeDateTime(startingIndex++);
+            product.DateCreated = reader.GetSafeDateTime(startingIndex++);
+
 
             return product;
         }

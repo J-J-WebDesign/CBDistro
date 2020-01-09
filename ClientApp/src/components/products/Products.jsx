@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import * as productServices from "../services/productServices"
+import ProductCard from "./ProductCard"
+import "./Product.css";
 
-export default class Link extends Component {
+export default class Products extends Component {
 constructor(props){
     super(props)
     this.state = {
-        products:0
+        products: null
     }
 }
 
@@ -20,9 +22,7 @@ constructor(props){
         this.setState(prevState=>{return{...prevState, products: vat}})
     }
 
-    productMapper = (product) => {
-        return product.name
-    }
+    productMapper = (product) => (<ProductCard key={product.id} product={product}/>)
 
     goBack = ()=>{
         this.props.history.push("/")
@@ -30,9 +30,9 @@ constructor(props){
 
     render() {
         return (
-            <div>
+            <div className="container col-12" id="products">
                 <h3>Products!</h3>
-                {/* {this.state.products} */}
+                {this.state.products}
                 <button onClick={this.goBack} className="btn btn-danger">Go Home!</button>
             </div>
         )

@@ -28,8 +28,6 @@ namespace CBDistro.Web.StartUp
                 });
             });
 
-            var optison = new MvcOptions();
-
             services.Configure<MvcOptions>(options =>
             {
                 options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllCors"));

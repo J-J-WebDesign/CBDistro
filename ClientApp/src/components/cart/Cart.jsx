@@ -1,4 +1,4 @@
-import React,{ Component } from 'react'
+import React,{ PureComponent } from 'react'
 import {
     CartComponent,
     ProductComponent,
@@ -6,7 +6,7 @@ import {
     cartLocalization
   } from "react-shopping-cart";
 
-export default class CBDCart extends Component {
+export default class CBDCart extends PureComponent {
     constructor(props){
         super(props)
         const { getDefaultLocalization } = cartLocalization;

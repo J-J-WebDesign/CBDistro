@@ -58,11 +58,6 @@ namespace CBDistro
 
             Cors.Configure(app, env);
 
-            //app.UseSignalR(routes =>
-            //{
-            //    routes.MapHub<ChatHub>("/chathub");
-            //});
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

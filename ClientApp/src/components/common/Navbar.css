@@ -1,0 +1,24 @@
+.cart {
+  color: #04dbc5;
+}
+
+/* .brand, .navbar-dark .nav-link {
+    color: #04dbc5 !important;
+} */
+
+.brand {
+  font-family: "Pacifico", cursive;
+}
+
+.btn-secondary {
+  background-color: #343a40 !important;
+  border: #343a40 !important;
+}
+
+.dropdownBtn {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.topPadding {
+  padding-top: 6px !important;
+}

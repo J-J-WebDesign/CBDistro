@@ -4,5 +4,13 @@
 }
 
 .navbarSpacing {
-  margin-bottom: 10px !important;
+  margin-bottom: 15px !important;
+}
+.backGround {
+  background-image: linear-gradient(to bottom right, #04dbc5, white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

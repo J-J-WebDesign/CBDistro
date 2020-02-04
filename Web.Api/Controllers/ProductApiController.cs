@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CBDistro.CBDistro.Models.Requests;
 using CBDistro.Models.Domain;
 using CBDistro.Services;
 using CBDistro.Services.Interfaces;
-using CBDistro.Web.Api.Controllers;
-using CBDistro.Web.Controllers;
 using CBDistro.Web.Models.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,11 +15,14 @@ namespace api.Controllers
     [ApiController]
     [AllowAnonymous]
     [Route("api/products"),]
-    public class ProductsApiController : BaseApiController
+    public class ProductsApiController : ControllerBase
     {
         private IProductService _service = null;
-        public ProductsApiController(IProductService service, ILogger<PingApiController> logger) : base(logger)
+        private readonly ILogger<ProductsApiController> _logger;
+
+        public ProductsApiController(IProductService service, ILogger<ProductsApiController> logger)
         {
+            _logger = logger;
             _service = service;
         }
 
@@ -51,26 +51,6 @@ namespace api.Controllers
                 response = new ErrorResponse(ex.Message);
             }
             return StatusCode(code, response);
-        }
-        [HttpPost]
-        public ActionResult<ItemResponse<int>> Add(ProductAddRequest model)
-        {
-            ObjectResult result = null;
-            int code = 200;
-
-            try
-            {
-                int id = _service.Add(model);
-                ItemResponse<int> response = new ItemResponse<int> { Item = id };
-                result = Created201(response);
-            }
-            catch (Exception ex)
-            {
-                base.Logger.LogError(ex.ToString());
-                ErrorResponse response = new ErrorResponse(ex.Message);
-                result = StatusCode(500, response);
-            }
-            return StatusCode(code, result);
         }
     }
 }

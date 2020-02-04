@@ -7,11 +7,11 @@ const ProductCard = props => {
     e.target.src = "https://bit.ly/2QWQhwp";
   };
   return (
-    <div className="productCard col-xs-12 col-lg-3">
+    <div className="card col-xs-12 col-lg-3">
       <h5 className="pt-4">{props.product.name}</h5>
       <hr />
       <img
-      className="mx-auto rounded d-block"
+      className="mx-auto productImg rounded d-block"
       onError={onImageError}
       src={props.product.image}
       alt={props.product.description.slice(0, 50)}
@@ -20,7 +20,7 @@ const ProductCard = props => {
       <hr/>
       <h5>${props.product.price}</h5>
       <hr/>
-      <p>
+      <p className="mb-3">
         {props.product.description > 50
           ? props.product.description.slice(0, 50) + "..."
           : props.product.description}

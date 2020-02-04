@@ -35,7 +35,7 @@ export default class Products extends Component {
     return (
       <div className="container col-12" id="products">
         <h3>Products!</h3>
-        {this.state.products}
+        <div className="card-columns col-10 m-auto">{this.state.products}</div>
         <button onClick={this.goBack} className="btn btn-danger">
           Go Home!
         </button>

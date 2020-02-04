@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Formik, Field } from "formik";
 import { Form, FormGroup, Label } from "reactstrap";
 import "./ProductForm.css";
+import * as productServices from "../services/productServices";
 
 export default class AddProductForm extends Component {
   constructor(props) {
@@ -17,7 +18,18 @@ export default class AddProductForm extends Component {
     };
   }
   handleSubmit = values => {
-    console.log(values);
+    productServices
+      .add(values)
+      .then(this.onAddSuccess)
+      .catch(this.axiosFail);
+  };
+
+  onAddSuccess = data => {
+    console.log(data);
+  };
+
+  axiosFail = (xhr, status, error) => {
+    console.log(xhr, status, error);
   };
   render() {
     return (

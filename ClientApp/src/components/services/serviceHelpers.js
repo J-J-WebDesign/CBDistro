@@ -19,10 +19,6 @@ const onGlobalError = err => {
   return Promise.reject(err);
 };
 
-const API_HOST_PREFIX = "https://localhost:5001/api/"
+const API_HOST_PREFIX = "https://localhost:5001/api";
 
-export {
-  onGlobalError,
-  onGlobalSuccess,
-  API_HOST_PREFIX
-};
+export { onGlobalError, onGlobalSuccess, API_HOST_PREFIX };

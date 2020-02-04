@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Data;
 using CBDistro.Data.Extensions;
 using CBDistro.Services.Interfaces;
+using CBDistro.Models.Requests;
+using System;
 
 namespace CBDistro.Services
 {
@@ -49,6 +51,25 @@ namespace CBDistro.Services
             }
             return result;
         }
+        public int Add(ProductAddRequest model)
+        {
+            int id = 0;
+            string procName = "[dbo].[Product_Insert]";
+            _data.ExecuteNonQuery(procName,
+                inputParamMapper: delegate (SqlParameterCollection col)
+                {
+                    AddCommonParams(model, col);
+                    SqlParameter idOut = new SqlParameter("@Id", SqlDbType.Int);
+                    idOut.Direction = ParameterDirection.Output;
+                    col.Add(idOut);
+                },
+                returnParameters: delegate (SqlParameterCollection returnCollection)
+                {
+                    object oId = returnCollection["@Id"].Value;
+                    Int32.TryParse(oId.ToString(), out id);
+                });
+            return id;
+        }
         private static Product MapProduct(IDataReader reader)
         {
             Product product = new Product();
@@ -67,7 +88,13 @@ namespace CBDistro.Services
 
             return product;
         }
-
-
+        private static void AddCommonParams(ProductAddRequest model, SqlParameterCollection col)
+        {
+            col.AddWithValue("@Name", model.Name);
+            col.AddWithValue("@Description", model.Description);
+            col.AddWithValue("@Price", model.Price);
+            col.AddWithValue("@Image", model.Image);
+            col.AddWithValue("@Brand", model.Brand);
+        }
     }
 }

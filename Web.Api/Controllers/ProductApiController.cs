@@ -69,5 +69,46 @@ namespace api.Controllers
             }
             return StatusCode(code, result);
         }
+        [HttpPut("{id:int}/update")]
+        public ActionResult<SuccessResponse> Update(ProductUpdateRequest model)
+        {
+            int Code = 200;
+            BaseResponse result = null;
+            try
+            {
+                _service.Update(model);
+                result = new SuccessResponse();
+            }
+            catch (Exception ex)
+            {
+                base.Logger.LogError(ex.ToString());
+                result = new ErrorResponse(ex.Message);
+                Code = 500;
+            }
+            return StatusCode(Code, result);
+        }
+
+
+        [HttpDelete("{id:int}/delete")]
+        public ActionResult<SuccessResponse> Delete(int id)
+        {
+            int code = 200;
+            BaseResponse response = null;
+
+            try
+            {
+                _service.Delete(id);
+
+                response = new SuccessResponse();
+            }
+            catch (Exception ex)
+            {
+
+                code = 500;
+                response = new ErrorResponse(ex.Message);
+            }
+
+            return StatusCode(code, response);
+        }
     }
 }

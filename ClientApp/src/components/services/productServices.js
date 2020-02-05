@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  onGlobalError,
-  onGlobalSuccess,
-  API_HOST_PREFIX
-} from "./serviceHelpers";
+import { onGlobalError, onGlobalSuccess, API_HOST_PREFIX } from "./serviceHelpers";
 
 const getAll = () => {
   const config = {
@@ -32,4 +28,32 @@ const add = data => {
     .catch(onGlobalSuccess);
 };
 
-export { getAll, add };
+const update = data => {
+  const config = {
+    method: "PUT",
+    withCredentials: true,
+    crossdomain: true,
+    data: data,
+    url: `${API_HOST_PREFIX}/products/update/${data.id}`
+  };
+
+  return axios(config)
+    .then(onGlobalError)
+    .catch(onGlobalSuccess);
+};
+
+const deleteProduct = data => {
+  const config = {
+    method: "DELETE",
+    withCredentials: true,
+    crossdomain: true,
+    data: data,
+    url: `${API_HOST_PREFIX}/products/delete/${data.id}`
+  };
+
+  return axios(config)
+    .then(onGlobalError)
+    .catch(onGlobalSuccess);
+};
+
+export { getAll, add, update, deleteProduct };

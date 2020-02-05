@@ -6,6 +6,9 @@ const ProductCard = props => {
     e.target.onerror = null;
     e.target.src = "https://bit.ly/2QWQhwp";
   };
+  const goToEditForm = () => {
+    props.goToEdit(props.product);
+  };
   return (
     <div className="card">
       <div className="row col-12 m-auto">
@@ -21,6 +24,7 @@ const ProductCard = props => {
         <i
           className="ml-auto fa fa-cog fa-2x pt-3 gear cardButtons"
           aria-hidden="true"
+          onClick={goToEditForm}
         ></i>
       </div>
       <hr />

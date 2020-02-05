@@ -4,6 +4,7 @@
 }
 
 .trash:hover {
+  cursor: pointer;
   transform: rotate(10deg);
 }
 
@@ -11,6 +12,7 @@
   color: red;
   opacity: 60%;
 }
-/* 
+
 .gear:hover {
-} */
+  cursor: pointer;
+}

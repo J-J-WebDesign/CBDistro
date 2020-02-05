@@ -17,6 +17,16 @@ export default class AddProductForm extends Component {
       }
     };
   }
+  componentDidMount() {
+    let { id } = this.props.match.params;
+    if (id) {
+      let formData = this.props.history.location.state;
+      this.setState(prevState => {
+        return { ...prevState, isEditing: true };
+      });
+    }
+  }
+
   handleSubmit = values => {
     productServices
       .add(values)

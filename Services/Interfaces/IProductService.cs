@@ -1,5 +1,7 @@
 ﻿using CBDistro.Models.Domain;
 using CBDistro.Models.Requests;
+using CBDistro.Web.Models.Responses;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,7 @@ namespace CBDistro.Services.Interfaces
     {
         List<Product> GetAll();
         int Add(ProductAddRequest model);
+        void Update(ProductUpdateRequest model);
+        void Delete(int id);
     }
 }

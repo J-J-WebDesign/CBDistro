@@ -7,6 +7,8 @@ using CBDistro.Data.Extensions;
 using CBDistro.Services.Interfaces;
 using CBDistro.Models.Requests;
 using System;
+using CBDistro.Web.Models.Responses;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CBDistro.Services
 {
@@ -70,6 +72,28 @@ namespace CBDistro.Services
                 });
             return id;
         }
+        public void Update(ProductUpdateRequest model)
+        {
+            string procName = "[dbo].[Product_Update]";
+            _data.ExecuteNonQuery(procName,
+            inputParamMapper: delegate (SqlParameterCollection col)
+            {
+                col.AddWithValue("@Id", model.Id);
+                AddCommonParams(model, col);
+
+            },
+        returnParameters: null);
+        }
+        public void Delete(int id)
+        {
+            string procName = "[dbo].[Product_Delete]";
+
+            _data.ExecuteNonQuery(procName, delegate (SqlParameterCollection paramCollection)
+            {
+                paramCollection.AddWithValue("@Id", id);
+
+            }, returnParameters: null);
+        }
         private static Product MapProduct(IDataReader reader)
         {
             Product product = new Product();
@@ -83,7 +107,7 @@ namespace CBDistro.Services
             product.Image = reader.GetSafeString(startingIndex++);
             product.Brand = reader.GetSafeString(startingIndex++);
             product.DateCreated = reader.GetSafeDateTime(startingIndex++);
-            product.DateCreated = reader.GetSafeDateTime(startingIndex++);
+            product.DateModified = reader.GetSafeDateTime(startingIndex++);
 
 
             return product;

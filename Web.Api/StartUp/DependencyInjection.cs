@@ -42,6 +42,7 @@ namespace CBDistro.Web.StartUp
             }
             );
            
+            services.AddSingleton<IFAQServices, FAQServices>();
             services.AddSingleton<IProductService, ProductServices>();
         }
         public static void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -27,11 +27,12 @@ namespace CBDistro.Services
             //int totalCount = 0;
             _data.ExecuteCmd(
                 "[dbo].[Product_SelectAll]",
-                inputParamMapper: delegate (SqlParameterCollection parameterCollection)
-                {
+                inputParamMapper: null,
+                //delegate (SqlParameterCollection parameterCollection)
+                //{
                     //parameterCollection.AddWithValue("@pageIndex", pageIndex);
                     //parameterCollection.AddWithValue("@pageSize", pageSize);
-                },
+                //},
                 singleRecordMapper: delegate (IDataReader reader, short set)
                 {
                     Product product = MapProduct(reader);

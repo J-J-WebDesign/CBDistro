@@ -25,10 +25,20 @@ export default class Products extends Component {
     });
   };
 
-  productMapper = product => <ProductCard key={product.id} product={product} />;
+  productMapper = product => (
+    <ProductCard
+      goToEdit={this.goToEditForm}
+      key={product.id}
+      product={product}
+    />
+  );
 
   goBack = () => {
     this.props.history.push("/");
+  };
+
+  goToEditForm = product => {
+    this.props.history.push(`/products/${product.id}/edit`, product);
   };
 
   render() {
